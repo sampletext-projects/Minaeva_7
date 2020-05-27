@@ -16,7 +16,7 @@ void write_mas(double* mas, int size)
 {
 	for (int i = 0; i < size; i++)
 	{
-		cout << setw(3) << setprecision(2) << mas[i] << " ";
+		cout << setw(3) << setprecision(5) << mas[i] << " ";
 	}
 	cout << "\n";
 }
@@ -60,16 +60,8 @@ void remove_start_end(double** mas, int& size)
 	*mas = m;
 }
 
-int main()
+void demonstrate(double* mas, int size)
 {
-	setlocale(LC_ALL, "russian");
-
-	cout << "Выполнила Минаева Полина Валерьевна УТН - 111\n";
-	cout << "Программа для управлению массивом с помощью функций\n";
-
-	int size = 10;
-
-	double* mas = new double[size]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
 	cout << "Mas: ";
 	write_mas(mas, size);
 
@@ -92,13 +84,27 @@ int main()
 	{
 		cout << "Массив образует геометрическую прогрессию. Q = " << q << "\n";
 	}
+}
 
-	cout << "Введите размер нового массива: ";
-	cin >> size;
-	cout << "Введите новый массив:\n";
-	read_mas(mas, size);
-	cout << "Mas: ";
-	write_mas(mas, size);
+int main()
+{
+	setlocale(LC_ALL, "russian");
+
+	cout << "Выполнила Минаева Полина Валерьевна УТН - 111\n";
+	cout << "Программа для управления массивом с помощью функций\n";
+
+	int size = 10;
+	double* mas;
+
+	mas = new double[size]{1.0, 2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0, 10.0};
+	demonstrate(mas, size);
+
+	mas = new double[size]{2.0, 4.0, 8.0, 16.0, 32.0, 64.0, 128.0, 256.0, 512.0, 1024.0};
+	demonstrate(mas, size);
+
+	mas = new double[size]{7, 17, 54, 12, 91, 87, 39, 56, 90, 37};
+	demonstrate(mas, size);
+
 	remove_start_end(&mas, size);
 	cout << "После удаления первого и последнего элементов\nMas: ";
 	write_mas(mas, size);
